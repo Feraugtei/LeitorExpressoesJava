@@ -19,10 +19,6 @@ public class LeitorJFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void btnProcessarActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-        ExpressaoSimp.setText("uysauyduy");
-    }                                            
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,7 +38,7 @@ public class LeitorJFrame extends javax.swing.JFrame {
         btnSimplificar = new javax.swing.JButton();
         btnReconhecer = new javax.swing.JButton();
         PainelReconhecimento = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        ExpressaoRec = new javax.swing.JTextArea();
         LabelRec = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,10 +63,15 @@ public class LeitorJFrame extends javax.swing.JFrame {
         });
 
         btnReconhecer.setText("Reconhecer");
+        btnReconhecer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReconhecerActionPerformed(evt);
+            }
+        });
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        PainelReconhecimento.setViewportView(jTextArea3);
+        ExpressaoRec.setColumns(20);
+        ExpressaoRec.setRows(5);
+        PainelReconhecimento.setViewportView(ExpressaoRec);
 
         LabelRec.setText("Expressão Reconhecida ?");
 
@@ -144,12 +145,31 @@ public class LeitorJFrame extends javax.swing.JFrame {
             }
             expressaoSimp = expressaoSimplificada.converterExpressao(expressaoMat);
             ExpressaoSimp.setText(expressaoSimp);
-            
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSimplificarActionPerformed
+
+    private void btnReconhecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReconhecerActionPerformed
+        Automato automato = new Automato();
+        String expressaoMat; 
+        expressaoMat = ExpressaoMat.getText().trim();
+        try{
+            if(expressaoMat.length()==0){
+            throw new Exception("Expressão vazia, escreva uma expressão matematica para continuar");
+            }
+            boolean reconhecido = automato.reconhecerExpressao(expressaoMat);
+            if (reconhecido) {
+                ExpressaoRec.setText("Sentença reconhecida");
+            } else {
+                ExpressaoRec.setText("Sentença não reconhecida");
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnReconhecerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +209,7 @@ public class LeitorJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea ExpressaoMat;
+    private javax.swing.JTextArea ExpressaoRec;
     private javax.swing.JTextArea ExpressaoSimp;
     private javax.swing.JLabel LabelExpMat;
     private javax.swing.JLabel LabelExpSimp;
@@ -198,7 +219,5 @@ public class LeitorJFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane PainelReconhecimento;
     private javax.swing.JButton btnReconhecer;
     private javax.swing.JButton btnSimplificar;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea3;
     // End of variables declaration//GEN-END:variables
 }

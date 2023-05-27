@@ -140,6 +140,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Reconhecer"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReconhecerActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="PainelReconhecimento">
       <AuxValues>
@@ -148,7 +151,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea3">
+        <Component class="javax.swing.JTextArea" name="ExpressaoRec">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
