@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.mycompany.leitorexpressoes;
 
-import javax.swing.JOptionPane;
+package com.mycompany.leitorexpressoes;
 
 /**
  *
- * @author User
+ * @author Fernando Teixeira
  */
-public class LeitorJFrame extends javax.swing.JFrame {
 
+import javax.swing.JOptionPane;
+
+public class LeitorJFrame extends javax.swing.JFrame {
+    
     /**
      * Creates new form AutomatoJFrame
      */
@@ -194,7 +192,7 @@ public class LeitorJFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

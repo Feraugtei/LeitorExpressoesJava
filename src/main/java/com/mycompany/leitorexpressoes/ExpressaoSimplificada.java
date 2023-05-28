@@ -1,6 +1,10 @@
 
 package com.mycompany.leitorexpressoes;
 
+/**
+ *
+ * @author Fernando Teixeira
+ */
 
 import java.util.ArrayList;
 import java.util.List;
