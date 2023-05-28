@@ -159,12 +159,8 @@ public class LeitorJFrame extends javax.swing.JFrame {
             if(expressaoMat.length()==0){
             throw new Exception("Expressão vazia, escreva uma expressão matematica para continuar");
             }
-            boolean reconhecido = automato.reconhecerExpressao(expressaoMat);
-            if (reconhecido) {
-                ExpressaoRec.setText("Sentença reconhecida");
-            } else {
-                ExpressaoRec.setText("Sentença não reconhecida");
-            }
+            String reconhecido = automato.reconhecerExpressao(expressaoMat);
+            ExpressaoRec.setText(reconhecido);
         }
         catch(Exception ex){
             JOptionPane.showMessageDialog(null,ex.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);

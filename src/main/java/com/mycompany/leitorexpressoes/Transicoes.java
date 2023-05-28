@@ -14,7 +14,7 @@ public class Transicoes {
             if (Character.isLetter(simbolo)) {
                 return 'V'; // Variável
             } else {
-                return 'R'; // Erro: símbolo inválido no início da expressão
+                return 'I'; // Erro: símbolo inválido no início da expressão
             }
             
         } else if (estado == ';') {
@@ -40,8 +40,10 @@ public class Transicoes {
         } else if (estado == '=') {
             if (Character.isDigit(simbolo)) {
                 return 'C'; // Constante numérica
-            } else if (Character.isLetter(simbolo) || simbolo == '(') {
+            } else if (Character.isLetter(simbolo)){
                 return 'V'; // Próximo estado é variável ou parêntese aberto
+            } else if (simbolo == '+' || simbolo == '-' || simbolo == '*' || simbolo == '/') {
+                return 'Z'; // Erro: operador diretamente após simbolo de igual.
             } else {
                 return 'R'; // Erro: símbolo inválido após '='
             }
@@ -69,9 +71,9 @@ public class Transicoes {
             } else if (Character.isLetter(simbolo) || simbolo == '(') {
                 return 'V'; // Próximo estado é variável ou parêntese aberto
             } else if (simbolo == '+' || simbolo == '-' || simbolo == '*' || simbolo == '/') {
-                return 'R'; // Erro: multiplos operadores em sequência
+                return 'X'; // Erro: multiplos operadores em sequência
             } else if (simbolo == ';') {
-                return 'R'; // Erro: expressão termina com operador
+                return 'Y'; // Erro: expressão termina com operador
             } else {
                 return 'R'; // Erro: símbolo inválido após operador
             }
