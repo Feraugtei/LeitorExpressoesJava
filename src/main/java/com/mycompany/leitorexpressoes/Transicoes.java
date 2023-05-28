@@ -11,8 +11,8 @@ package com.mycompany.leitorexpressoes;
 public class Transicoes {
     public char getTransicao(char estado, char simbolo) {
         if (estado == '$') {
-            if (Character.isLetter(simbolo) || simbolo == '(') {
-                return 'V'; // Variável ou parêntese aberto
+            if (Character.isLetter(simbolo)) {
+                return 'V'; // Variável
             } else {
                 return 'R'; // Erro: símbolo inválido no início da expressão
             }
@@ -31,7 +31,9 @@ public class Transicoes {
             } else if (simbolo == '(') {                    // quais estados aceitam parenteses ?
                 return '('; // Próximo estado é '('
             } else if (simbolo == '+' || simbolo == '-' || simbolo == '*' || simbolo == '/') {
-                return 'R'; // Erro: símbolo inválido após a variável
+                return 'O'; // Próximo estado é 'O'
+            } else if (simbolo == ';') {
+                return ';'; // Próximo estado é ';'
             } else {
                 return 'R'; // Erro: símbolo inválido após a variável
             }
